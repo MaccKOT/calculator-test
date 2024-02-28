@@ -5,15 +5,15 @@ function calculator(input) {
 	let left;
 	let sign = "";
 	let right;
-	[left, sign, right] = input.split(" ");
 	let isRoman = false;
-	let isInteger = false;
+
+	[left, sign, right] = input.split(" ");
 
 	//проверки на корректность ввода
-	if (left === "" || sign === "" || right === "") throw new Error();
-	// if (sign !== "+" || sign !== "-" || sign !== "*" || sign !== "/")
-	// 	throw new Error();
 	if (input.split(" ").length > 3) throw new Error();
+
+	if (left === "" || sign === "" || right === "") throw new Error();
+	if (!/^\+$|^\-$|^\*$|^\/$/.test(sign)) throw new Error();
 
 	//проверка на корректность римских цифр
 	const regexForRomanDigits =
@@ -26,13 +26,14 @@ function calculator(input) {
 	else {
 		left = parseInt(left);
 		right = parseInt(right);
-		isInteger = true;
 		if (Number.isNaN(left) || Number.isNaN(right)) throw new Error();
+		if (left > 10 || left <= 0 || right > 10 || right <= 0) throw new Error();
 	}
 
 	if (isRoman) {
 		left = romans.deromanize(left);
 		right = romans.deromanize(right);
+		if (left > 10 || right > 10) throw new Error();
 	}
 
 	//проверка на деление на ноль
@@ -52,5 +53,6 @@ function calculator(input) {
 
 export default calculator;
 
-// console.log(calculator("10 - 1"));
-// console.log(calculator("II + V"));
+//console.log(calculator("3 % 4"));  //error
+//console.log(calculator("10 - 1")); // 9
+//console.log(calculator("II + V")); //VII

@@ -70,14 +70,13 @@ test("должен выбрасывать ошибку на некорректн
 	expect(() => calculator("V")).toThrowError();
 	expect(() => calculator("3 % 4")).toThrowError();
 	expect(() => calculator("1 + 1 + 1")).toThrowError();
-	// ??
-	// expect(() => calculator("11 + 1")).toThrowError();
-	// expect(() => calculator("1 + 11")).toThrowError();
-	// expect(() => calculator("XI + I")).toThrowError();
-	// expect(() => calculator("I + XI")).toThrowError();
+	expect(() => calculator("11 + 1")).toThrowError();
+	expect(() => calculator("1 + 11")).toThrowError();
+	expect(() => calculator("XI + I")).toThrowError();
+	expect(() => calculator("I + XI")).toThrowError();
 	expect(() => calculator("1 + V")).toThrowError();
 	expect(() => calculator("I + 1")).toThrowError();
 	expect(() => calculator("5 / 0")).toThrowError();
-	// expect(() => calculator("0 + 1")).toThrowError();
-	// expect(() => calculator("1 + 0")).toThrowError();
+	expect(() => calculator("0 + 1")).toThrowError();
+	expect(() => calculator("1 + 0")).toThrowError();
 });
