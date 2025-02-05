@@ -1,5 +1,4 @@
-// https://github.com/qbunt/romans
-import romans from "romans";
+import romans from "romans"; // https://github.com/qbunt/romans
 
 function calculator(input) {
 	let left;
@@ -11,7 +10,6 @@ function calculator(input) {
 
 	//проверки на корректность ввода
 	if (input.split(" ").length > 3) throw new Error();
-
 	if (left === "" || sign === "" || right === "") throw new Error();
 	if (!/^\+$|^\-$|^\*$|^\/$/.test(sign)) throw new Error();
 
@@ -51,3 +49,5 @@ export default calculator;
 //console.log(calculator("3 % 4")); //error
 //console.log(calculator("10 - 1")); // 9
 //console.log(calculator("II + V")); //VII
+
+// TODO! перевести на typescript
